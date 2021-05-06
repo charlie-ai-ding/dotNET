@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\Step_ONE\\Step_ONE\\Step_ONE.csproj": {}
+    "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\step_one\\Step_ONE\\Step_ONE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\Step_ONE\\Step_ONE\\Step_ONE.csproj": {
+    "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\step_one\\Step_ONE\\Step_ONE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\Step_ONE\\Step_ONE\\Step_ONE.csproj",
+        "projectUniqueName": "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\step_one\\Step_ONE\\Step_ONE.csproj",
         "projectName": "Step_ONE",
-        "projectPath": "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\Step_ONE\\Step_ONE\\Step_ONE.csproj",
+        "projectPath": "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\step_one\\Step_ONE\\Step_ONE.csproj",
         "packagesPath": "C:\\Users\\charl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\Step_ONE\\Step_ONE\\obj\\",
+        "outputPath": "C:\\Users\\charl\\workspace\\dotnet\\projects\\basic_c_sharp\\step_one\\Step_ONE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\charl\\AppData\\Roaming\\NuGet\\NuGet.Config",
