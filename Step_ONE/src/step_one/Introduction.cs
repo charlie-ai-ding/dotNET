@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using static System.Console;
 
 namespace Step_ONE.src.step_one
@@ -154,10 +155,177 @@ You can use a yield break statement to end the iteration.
         public static void test_list()
         {
             WriteLine("test list");
+            // first one is calling the static constrators
             List<string> list1 = new List<string>();
+            //The new keyword will  triggle the instance constracors which has params or not 
             List<string> list2 = new List<string>(10);
 
+            list1.Capacity = 100;    // Invokes set accessor
+            int i = list1.Count;     // Invokes get accessor
+            int j = list1.Capacity;  // Invokes get accessor
 
+            list1.Add("Charlie");
+            list1.Add("Daniel");
+            for(int k = 0; k < list1.Count; k++) // Invokes Count Properties get accessor
+            {
+                string s = list1[k];    // Invoke List  indexers get accessor
+                list1[k] = s.ToUpper(); // Invokes list indexers set accessor
+            }
+
+
+        }
+        //test for event in List
+        
+        static int changeCount_for_Link=10;
+
+        static void ListChange(object sender,EventArgs e) {
+            changeCount_for_Link++;
+        }
+        public static void test_event_in_list()
+        {
+            List<string> names = new List<string>(10);
+            names.Changed += new EventHandler(ListChange); // compiler support 
+            names.Add("Liz");
+            names.Add("Liz");
+            names.Add("Liz");
+            names.Add("Liz");
+
+            WriteLine($"changeCount is {changeCount_for_Link}");
+
+        }
+      
+        public static void test_Operators()
+        {
+            List<int> a = new List<int>(1);
+            a.Add(1);
+            a.Add(2);
+
+            List<int> b = new List<int>(1);
+            b.Add(1);
+            b.Add(2);
+
+            WriteLine(a == b);
+            b.Add(3);
+            WriteLine(a == b);
+        }
+        
+        /**
+         * Struct constructors are invoked with the new operator,
+         */
+        public static void test_class_struct_demo()
+        {
+            Point[] p_instances = new Point[100];
+            Point_Struct[] p_structs = new Point_Struct[100];
+
+            for(int i = 0; i < 100; i++)
+            {
+                p_instances[i] = new Point(i, i + 10);
+                p_structs[i] = new Point_Struct(i, i + 10);
+            }
+
+            foreach(Point p_i in p_instances)
+            {
+              //  WriteLine("Point's hashcode is: {0}",p_i);
+            }
+            WriteLine("---------->>>>>>>>>>>>");
+            foreach (Point_Struct p_i in p_structs)
+            {
+               // WriteLine("Point_Struct's hashcode is: {0}", p_i.x);
+            }
+
+            Point a = new Point(10, 10);
+            Point b = a;
+            a.x = 20;
+            WriteLine("a and b are class references which pointed the same address in heap, so b.x shoud be 20: {0}",b.x);
+
+            Point_Struct a1 = new Point_Struct(10, 10);
+            Point_Struct b1 = a1;
+            a1.x = 20;
+            WriteLine("a1 and b1 are a copy of struct value,but the value of a1 has been altered , but b.x do not change,so shoud be 10: {0}", b1.x);
+
+        }
+  
+        public static void test_array_demo()
+        {
+            int[] a1 = new int[10];    // one dimension
+            int[,] a2 = new int[10, 5];  // two dimensions
+            int[,,] a3 = new int[10, 5, 2];  // three dimensions
+
+            // the element in array can be array
+            int[][] a = new int[3][];
+            a[0] = new int[10];
+            a[1] = new int[2];
+            a[2] = new int[111];
+            a[3] = new int[20];
+            // a[3][0] = 1; // Index was outside the bounds of the array.
+            // WriteLine(a[3][0]);
+
+        }
+   
+        /**
+         * 
+         */
+        public static void test_interface_demo()
+        {
+            EditBox editBox = new EditBox();
+            IControl control = (IControl)editBox;
+            IDataBound dataBound = (IDataBound)editBox;
+
+            editBox.Paint();
+            control.Paint();
+            dataBound.Bind(null);
+
+
+        }
+        
+        public static void test_enum_demo()
+        {
+            Color c = Color.Red;
+            ColorTest.PrintColor(c);
+            ColorTest.PrintColor(Color.Red);
+
+            WriteLine((int)Color.Red);
+            WriteLine((int)Color.Green);
+            WriteLine((int)Color.Blue);
+
+
+
+
+        }
+    
+
+        /**
+         * An instance of the Function delegate type can reference any method that takes a double argument and returns a double value.
+         * A delegate can reference either a static method or an instance method,
+         * 
+         * Delegate does not know or care about the class of the method it reference;all that matters is that the referenced method
+         * has the same parameters and return types as the delegate,  the input and output , look the funciton as a black box or pure funciton.
+         */
+        public static void test_delegate_demo()
+        {
+            double[] a = {0.0,0.1,0.5,1.5};
+            double[] squares = DelegateTest.Apply(a, DelegateTest.Square);
+            double[] sines = DelegateTest.Apply(a, Math.Sin);
+            Multiplier m = new Multiplier(2.0);
+            double[] doubles = DelegateTest.Apply(a, m.Multiply);
+
+            WriteLine($"squares:{squares.Length}/n sines:{sines.Length} doubles:{doubles.Length}");
+
+            double[] demos = DelegateTest.Apply(a, (double x) => x * 100);
+            foreach(var i in demos)
+            {
+                WriteLine(i);
+            }
+        }
+    
+        /**
+         * 
+         * 
+         * 
+         */
+        public static void test_attribute_demo()
+        {
+            AttributeTest.ShowHelp(typeof(Widget));
         }
     }
 
@@ -181,6 +349,26 @@ You can use a yield break statement to end the iteration.
             this.x = x;
         }
     }
+
+    /**
+     * struct are value types and do not require heap allocation
+     * 
+     */
+    public struct Point_Struct
+    {
+        public int x, y;
+        public Point_Struct(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+        public Point_Struct(int x)
+        {
+            this.y = 100;
+            this.x = x;
+        }
+    }
+
 
     public class Point3D : Point
     {
@@ -330,7 +518,7 @@ You can use a yield break statement to end the iteration.
         //constant..
         const int defaultCapacity = 4;
 
-        //Fields...
+        //Fields...  need locations in memory
         T[] items;
         int count;
 
@@ -346,14 +534,13 @@ You can use a yield break statement to end the iteration.
             WriteLine("I am in list construactor with zore param");
         }
 
-        public List(int capacity )
+        public List(int capacity = defaultCapacity)
         {
-           capacity = defaultCapacity;
             items = new T[capacity];
             WriteLine("I am in list construactor with one param");
         }
 
-        // Properties...
+        // Properties...  do not need locations in memory. this is just the functions which can get or set value relative with the class or instance
         public int Count { get { return count; } }
 
         public int Capacity
@@ -374,7 +561,7 @@ You can use a yield break statement to end the iteration.
             }
         }
 
-        //Indexer...
+        //Indexer... like the Properties, do not need locations in memory... Some syntaxs this[] get and set style is array style.
         public T this[int index]
         {
             get
@@ -396,6 +583,8 @@ You can use a yield break statement to end the iteration.
             count++;
             onChanged();
         }
+      // here, invoking the delegate represented by the event
+      // virtual funciton like pointer function and can be used as hook functions.
         protected virtual void onChanged()
         {
             if (Changed != null) Changed(this, EventArgs.Empty);
@@ -408,8 +597,8 @@ You can use a yield break statement to end the iteration.
 
         static bool Equals(List<T> a, List<T> b)
         {
-            if (a == null) return b == null;
-            if (b == null || a.count != b.count) return false;
+            if (a is null) return b is null;
+            if (b is null || a.count != b.count) return false;
             for (int i = 0; i < a.count; i++)
             {
                 if (!object.Equals(a.items[i], b.items[i]))
@@ -421,7 +610,18 @@ You can use a yield break statement to end the iteration.
         }
 
 
-
+        /**
+         * 0: class consit of state and acitons, the state can be chance for sure, so the class should have a ability to provide the 
+         * notifications to reflect the state's changes.
+         * 1: how to implement?
+         *   1.1: event member which is delegate type and using event keyword.
+         *   1.2: the event should be raised by another virtual method
+         *   summary: the notion of raising an event is precisely equivalent to invoking the delegate represented by the event
+         *   thus,there are no special language constructs for raising events
+         * 2: how to use it on the side of clients.
+         *   Clients react to events through event handlers, Event handlers are attached using the += operator
+         *   and removed using -= operator.
+         */
 
         //Event...
         public event EventHandler Changed;
@@ -439,4 +639,158 @@ You can use a yield break statement to end the iteration.
 
     }
 
+    // Interfaces : can contain methods,properties,events,and indexers.
+
+    interface IControl
+    {
+        void Paint();
+    }
+    interface ITextBox : IControl
+    {
+        void SetText(string text);
+    }
+    interface IListBox : IControl
+    {
+        void SetItems(string[] items);
+    }
+    interface IComboBox : ITextBox, IListBox
+    {
+
+    }
+    public class Binder { }
+
+    interface IDataBound
+    {
+        void Bind(Binder b);
+    }
+
+    public class EditBox:IControl, IDataBound
+    {
+        public void Paint() { WriteLine("EditBox Paint Method"); }
+        public void Bind() { WriteLine("EditBox Bind Method"); }
+        void IControl.Paint() { WriteLine("EditBox implement IControl's Method"); }
+        void IDataBound.Bind(Binder b) { WriteLine("EditBox implement IDataBound's Method"); }
+    }
+
+    // Enum
+
+    public enum Color
+    {
+        Red,
+        Green,
+        Blue
+    }
+    public class ColorTest
+    {
+        public static void PrintColor(Color color)
+        {
+            switch (color)
+            {
+                case Color.Red:
+                    WriteLine("Red");
+                    break;
+                case Color.Green:
+                    WriteLine("Green");
+                    break;
+                case Color.Blue:
+                    WriteLine("Blue");
+                    break;
+                default:
+                    WriteLine("Unknown color");
+                    break;
+            }
+        }
+    }
+
+
+    //Delegatas  object-oriented and type-safe function pointers
+   public delegate double Function(double x);
+
+
+    public class Multiplier
+    {
+        double factor;
+        public Multiplier(double factor)
+        {
+            this.factor = factor;
+        }
+        public double Multiply(double x)
+        {
+            return x * factor;
+        }
+        public void testThis()
+        {
+            WriteLine("this is test for this work or not");
+        }
+    }
+
+    public class DelegateTest
+    {
+       public  static double Square(double x)
+        {
+            return x * x;
+        }
+
+        public static double[] Apply(double[]a, Function f)
+        {
+            double[] result = new double[a.Length];
+            for(int i = 0; i < a.Length; i++)
+            {
+                result[i] = f(a[i]);
+            }
+            
+            return result;
+        }
+
+       
+    }
+
+    // Attributes why Types,members,and other entities in a C# program support modifiers that control certain aspects of their behavior.
+
+    /**
+     * Think about the view of the compiler's point, and follow the convention-over-configuration rules
+     * https://docs.microsoft.com/en-us/archive/msdn-magazine/2009/february/patterns-in-practice-convention-over-configuration
+     * 
+     */
+    public class HelpMeAttribute : Attribute
+    {
+        string url;
+        string topic;
+        public HelpMeAttribute(string url,string topic)
+        {
+            this.url = url;
+            this.topic = topic;
+        }
+        public string Url { get { return url; } }
+        public string Topic
+        {
+            get { return topic; }
+            set { topic = value; }
+        }
+    }
+
+    [HelpMe(url:"http://www.google.com",topic:"General")]
+    public class Widget
+    {
+        [HelpMe(url:"https://zetcode.com/lang/csharp/delegates/",topic:"General")]
+        public void Display(string text) { }
+    }
+
+    public class AttributeTest
+    {
+        public static void ShowHelp(MemberInfo member)
+        {
+            HelpMeAttribute a = Attribute.GetCustomAttribute(member, typeof(HelpMeAttribute)) as HelpMeAttribute;
+
+            if(a is null)
+            {
+                WriteLine("No help for {0}", member);
+            }
+            else
+            {
+                WriteLine(" help for {0}", member);
+                WriteLine("Url: {0}, Topic: {1}", a.Url,a.Topic);
+            }
+        }
+    }
 }

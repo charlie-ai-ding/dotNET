@@ -27,7 +27,7 @@ namespace Step_ONE
             // week1.GettingKeyInputFromTheUser();
             //  week1.GettingInputArgFromConsole(args);
            // chapter02.SettingOptionsWithArguments(args);
-            Introduction.test_list();
+            Introduction.test_attribute_demo();
 
         }
     }
