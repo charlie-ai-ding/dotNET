@@ -1,4 +1,5 @@
-﻿using Step_ONE.src.step_one;
+﻿using Step_ONE.src.nutshell;
+using Step_ONE.src.step_one;
 using System;
 using static System.Console;
 
@@ -26,9 +27,12 @@ namespace Step_ONE
             // week1.formattingUsingNumberedPositionalArguments();
             // week1.GettingKeyInputFromTheUser();
             //  week1.GettingInputArgFromConsole(args);
-           // chapter02.SettingOptionsWithArguments(args);
-            Introduction.test_attribute_demo();
+            // chapter02.SettingOptionsWithArguments(args);
+            //Introduction.test_attribute_demo();
+            //BasicConcepts.A.A_1_1.test_acc();
 
+            //BasicConcepts.B.test_acc_intermal();
+            CSharp_Basic.ExpressionsExamples();
         }
     }
 }

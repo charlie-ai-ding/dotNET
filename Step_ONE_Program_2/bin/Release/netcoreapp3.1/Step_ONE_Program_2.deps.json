@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Step_ONE_Program_2/1.0.0": {
+        "runtime": {
+          "Step_ONE_Program_2.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Step_ONE_Program_2/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

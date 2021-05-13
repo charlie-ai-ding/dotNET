@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Step_ONE", "Step_ONE\Step_ONE.csproj", "{81C6B5E0-2D78-41B0-9269-8A9B3A24C547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Step_ONE", "Step_ONE\Step_ONE.csproj", "{81C6B5E0-2D78-41B0-9269-8A9B3A24C547}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Step_ONE_Program_2", "Step_ONE_Program_2\Step_ONE_Program_2.csproj", "{7CF6ADE6-8F44-449F-9AEC-A851C62D399E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{81C6B5E0-2D78-41B0-9269-8A9B3A24C547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C6B5E0-2D78-41B0-9269-8A9B3A24C547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81C6B5E0-2D78-41B0-9269-8A9B3A24C547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CF6ADE6-8F44-449F-9AEC-A851C62D399E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CF6ADE6-8F44-449F-9AEC-A851C62D399E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CF6ADE6-8F44-449F-9AEC-A851C62D399E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CF6ADE6-8F44-449F-9AEC-A851C62D399E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

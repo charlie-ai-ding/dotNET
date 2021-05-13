@@ -1,0 +1,13 @@
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\bin\Release\netcoreapp3.1\Step_ONE_Program_2.exe
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\bin\Release\netcoreapp3.1\Step_ONE_Program_2.deps.json
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\bin\Release\netcoreapp3.1\Step_ONE_Program_2.runtimeconfig.json
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\bin\Release\netcoreapp3.1\Step_ONE_Program_2.runtimeconfig.dev.json
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\bin\Release\netcoreapp3.1\Step_ONE_Program_2.dll
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\bin\Release\netcoreapp3.1\Step_ONE_Program_2.pdb
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\obj\Release\netcoreapp3.1\Step_ONE_Program_2.csprojAssemblyReference.cache
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\obj\Release\netcoreapp3.1\Step_ONE_Program_2.AssemblyInfoInputs.cache
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\obj\Release\netcoreapp3.1\Step_ONE_Program_2.AssemblyInfo.cs
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\obj\Release\netcoreapp3.1\Step_ONE_Program_2.csproj.CoreCompileInputs.cache
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\obj\Release\netcoreapp3.1\Step_ONE_Program_2.dll
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\obj\Release\netcoreapp3.1\Step_ONE_Program_2.pdb
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\Step_ONE\Step_ONE_Program_2\obj\Release\netcoreapp3.1\Step_ONE_Program_2.genruntimeconfig.cache
