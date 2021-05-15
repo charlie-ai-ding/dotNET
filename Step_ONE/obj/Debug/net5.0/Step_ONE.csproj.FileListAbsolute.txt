@@ -1,0 +1,16 @@
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\bin\Debug\net5.0\Step_ONE.exe
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\bin\Debug\net5.0\Step_ONE.deps.json
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\bin\Debug\net5.0\Step_ONE.runtimeconfig.json
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\bin\Debug\net5.0\Step_ONE.runtimeconfig.dev.json
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\bin\Debug\net5.0\Step_ONE.dll
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\bin\Debug\net5.0\ref\Step_ONE.dll
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\bin\Debug\net5.0\Step_ONE.pdb
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\obj\Debug\net5.0\Step_ONE.csprojAssemblyReference.cache
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\obj\Debug\net5.0\Step_ONE.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\obj\Debug\net5.0\Step_ONE.AssemblyInfoInputs.cache
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\obj\Debug\net5.0\Step_ONE.AssemblyInfo.cs
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\obj\Debug\net5.0\Step_ONE.csproj.CoreCompileInputs.cache
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\obj\Debug\net5.0\Step_ONE.dll
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\obj\Debug\net5.0\ref\Step_ONE.dll
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\obj\Debug\net5.0\Step_ONE.pdb
+C:\Users\charl\workspace\dotnet\projects\basic_c_sharp\step_one\Step_ONE\obj\Debug\net5.0\Step_ONE.genruntimeconfig.cache
