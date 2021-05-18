@@ -1,4 +1,4 @@
-﻿using Step_ONE.src.nutshell;
+﻿using Step_ONE.src.nutshell.Generics;
 using Step_ONE.src.step_one;
 using System;
 using static System.Console;
@@ -34,7 +34,12 @@ namespace Step_ONE
             //BasicConcepts.B.test_acc_intermal();
             // CSharp_Basic.ExpressionsExamples();
 
-            TestCreatingType.BoxingAndUnBoxing();
+            // TestCreatingType.BoxingAndUnBoxing();
+            // Generics.Test_Generic_Method();
+            //UnboundGenericTypes.Test_typeof();
+            //TestStaticData.Test_Static_Data();
+            //VarianceIsNotAutomatic.Test_Variance_Is_Not_Automatice();
+            DeclareingCovariantTypeParameter.Test_DeclareingCovariantType();
         }
     }
 }

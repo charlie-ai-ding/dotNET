@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using static System.Console;
+using System.Runtime.CompilerServices;
 
+//You can expose internal members to other friend assemblies by adding the  assembly attribute
+[assembly: InternalsVisibleTo("zgding")]
 namespace Step_ONE.src.nutshell
 {
     class CreatingTypes
@@ -541,5 +544,212 @@ namespace Step_ONE.src.nutshell
         public void Push(object obj) { data[position++] = obj; }
         public object Pop() { return data[position--]; }
     }
+    //struct
+    public  struct PointStruct
+    {
+        int x, y;
+        public PointStruct(int x, int y) { this.x = x; this.y = y; }
 
+        // int z = 1;  //Illegal: field initializer
+       //  public PointStruct() { } //Illegal parameterless constructor , struct live for value, not for reference,
+       //  public PointStruct(int x) { this.x = x; } // Illegal: must assgin field y
+       
+        /*
+         * reference -> heap, value type live inplace wherever the variable was declared. If a value type appears as a parameter or
+         * local variable, it will reside on the stack.
+         */
+        public static void test()
+        {
+
+            PointStruct ps = default; //parameter or local variables which are on the  stack.
+        }
+        class Myclass
+        {
+            PointStruct ps = new PointStruct(1, 2); // Lives on heap ,because Myclass instances live on the heap;
+        }
+        //Adding the ref modifier to a struct's declaration ensures that it can only ever reside on the stack
+        // Span<T> and ReadOnly Span<T> structs
+        ref struct PointRef { public int X, Y; }
+
+        public static void Test_Ref_Struct()
+        {
+            var point1 = new PointStruct[100]; // arrays of structs live on the heap, and boxing a struct sends it to the heap
+            // var points = new PointRef[100]; // the ref modifier make the struct of PointRef must be on the stack.
+
+            // class MyClass { PointRef pr; }
+        }
+    }
+    //Access Modifiers
+    class AMClass1 { } // internal (default) // in same assembly
+    public class AMClass2 { } // is accessible from outside its assembly
+
+    class AMClassA { int x;  } // x is private (default)
+    class AMClassB { internal int x; } //  x is accessible in the same assembly
+
+    class AMBaseClass
+    {
+        void Foo() { } //private
+        protected void Bar() { }
+    }
+
+    
+    class SubClass : AMBaseClass
+    {
+        // Accessibility Capping
+        public void SSS() { } // Because the SubClass is internal, so the SSS is internal , public is impossible
+        void Test1()
+        {
+           //  Foo(); Error cannot access Foo
+            Bar();
+        }
+    }
+    // Restrictions on Access Modifiers  inconsistence accessor
+    class BaseClass2 { protected virtual void Foo() { } }
+    class SubClass1:BaseClass2 { protected override void Foo() { } }
+   // class SubClass1 : BaseClass2 { public  override void Foo() { } }
+
+    internal class AAA { }
+    // public class BBB : AAA { } // Error
+
+    // Interfaces similar to a class, only specifies behavior (method implicitly abstract) and do not hold state(data)
+    // which consists functions: methods,properties,events, and indexers 
+    public interface IEnumerator
+    {
+        // interface members are always implicitly public and cannot declare an access modifier.
+        bool MoveNext();
+        object Current { get; }
+        void Reset();
+    }
+    internal class CountDown : IEnumerator
+    {
+        int count = 11;
+        public bool MoveNext() => count-- > 0;
+        public object Current => count;
+        public void Reset() { throw new NotSupportedException(); }
+    }
+
+    public static class Unit { public static object GetCountDown() => new CountDown(); }
+   
+    class InAnotherAssemble
+    {
+        //a caller from another assembly could do this;
+        // Even Though CountDown is internal class,its members that implement IEnumerator can be called publicly by casting an instance of
+        // CountDown to IEnumerator, but if IEnumerator is internal,than this wouldn't be possible.
+        public void Test_Accessible_Interface_And_SubClass()
+        {
+            IEnumerator e = (IEnumerator)Unit.GetCountDown();
+            e.MoveNext();
+        }
+    }
+
+    //Explicit interface implementation
+    interface I1 { void Foo(); }
+    interface I2 { int Foo(); }
+    public class Widget : I1, I2
+    {
+        public void Foo()
+        {
+            WriteLine("this is implement of I1.Foo");
+        }
+        int I2.Foo()
+        {
+            WriteLine("this is implement of I2.Foo");
+            return 22;
+        }
+
+        public void Test()
+        {
+            Widget w = new Widget();
+            w.Foo();
+            ((I2)w).Foo();// Widget's implementation of I2.Foo;
+
+            RichTextBox r = new RichTextBox();
+            r.Undo();               // RichTextBox.Undo
+            ((IUndoable)r).Undo();  // RichTextBox.Undo
+            ((TextBox)r).Undo();    // RichTextBox.Undo
+        }
+    }
+    // Implementing interface members virtually
+    public interface IUndoable { void Undo(); }
+
+    /**
+   * The virtual keyword is used to modify a method, property, indexer, or event declaration 
+   * and allow for it to be overridden in a derived class. 
+   * For example, this method can be overridden by any class that inherits it:
+   */
+
+    public class TextBox : IUndoable
+    {
+        public virtual void Undo() => WriteLine("TextBox.Undo is just a bridge");
+    }
+    public class RichTextBox : TextBox
+    {
+        public override void Undo() => WriteLine("RichTextBox.Undo");
+    }
+   
+    // Reimplementing an interface in a subclass
+    public interface IUndoable2 {  void Undo(); }
+    
+    public class TextBox2 : IUndoable2
+    {
+        // explicitly interface implemented
+        void IUndoable2.Undo() => WriteLine("TextBox2.Undo");
+     // public  void Undo() => WriteLine("TextBox2.Undo");
+    }
+
+    public class TextBox3 : IUndoable2
+    {
+        // explicitly interface implemented
+        
+        public  void Undo() => WriteLine("TextBox3.Undo");
+    }
+
+    public class RichTextBox2 : TextBox2, IUndoable2
+    {
+        public void Undo() => WriteLine("RichTextBox.Undo");
+    }
+
+    public class RichTextBox3 : TextBox3, IUndoable2
+    {
+        public void Undo() => WriteLine("RichTextBox3.Undo");
+    }
+    // Interfaces and Boxing
+
+    interface I { void Foo(); }
+    struct S:I { public void Foo() { } }
+
+    //Interface can add a default implementation to an interface member, static members
+    interface ILogger
+    {
+        void Log(string text) => WriteLine(Prefix +text);
+        private static string Prefix = "Charlie";
+        static string Subfix = "Good";
+    }
+
+
+
+
+    public class Test1
+    {
+        public static void Test()
+        {
+            RichTextBox2 r = new RichTextBox2();
+            r.Undo();                // RichTextBox.Undo    Reimplementing an interface in a subclass
+            ((IUndoable2)r).Undo(); // RichTextBox.Undo 
+
+            RichTextBox3 r3 = new RichTextBox3();
+            r3.Undo(); // RichTextBox3.Undo
+            ((IUndoable2)r).Undo(); //RichTextBox.Undo 
+            ((TextBox3)r3).Undo();  // TextBox3.Undo
+
+            //
+            S s = new S();
+            s.Foo();
+            I i = s; // Box occurs when casting to interface
+            i.Foo();
+
+            ILogger.Subfix = "Cenntennial";
+
+        }
+    }
 }
