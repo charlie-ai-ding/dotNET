@@ -1,4 +1,4 @@
-﻿using Step_ONE.src.nutshell.Generics;
+﻿using Step_ONE.src.nutshell.Advance;
 using Step_ONE.src.step_one;
 using System;
 using static System.Console;
@@ -39,7 +39,24 @@ namespace Step_ONE
             //UnboundGenericTypes.Test_typeof();
             //TestStaticData.Test_Static_Data();
             //VarianceIsNotAutomatic.Test_Variance_Is_Not_Automatice();
-            DeclareingCovariantTypeParameter.Test_DeclareingCovariantType();
+            // DeclareingCovariantTypeParameter.Test_DeclareingCovariantType();
+            //PlugInMethodsWithDelegates.Test_Plug_In();
+            //Advance.Test_Delegate_1();
+            //GenericDelegateTypes.Test_Generic_DeleateTypes();
+            //DelegatesVersusInterfaces.Test_DelegateVersusInterface();
+            //ParameterCompatibility.Test_ParameterCompatibility();
+            //EventExampleComplete.Test_EventExampleComplete();
+            //LambdaExpressions.CapturingIterationVariables();
+           //  TryStatementsAndExceptions.TryCatch();
+            //Enumerator<int>.Test_Iterator_Semantics();
+            //IteratorAndTryCatchFinally.Test_IteratorAndTryCatch();
+            //TuplesExample.Test_Tuple();
+            //DefiningARecord.Test_Record();
+            //Patterns.Test_Patterns();
+            //Attributes.Foo2();
+            //Attributes.Foo.Test_Attribute();
+            DynamicBinding.DynamicConversions();
         }
+        
     }
 }
