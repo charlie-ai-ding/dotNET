@@ -1,7 +1,8 @@
-﻿using Step_ONE.src.nutshell.Advance;
+﻿using Step_ONE.src.nutshell.dotNET;
 using Step_ONE.src.step_one;
 using System;
 using static System.Console;
+
 
 namespace Step_ONE
 {
@@ -9,7 +10,8 @@ namespace Step_ONE
     {
         static void Main(string[] args)
         {
-            //System.Data.DataSet ds;
+            /**  0: Before .NET
+             *   //System.Data.DataSet ds;
             //System.Net.Http.HttpClient client;
 
             //Console.WriteLine("Hello World!");
@@ -55,8 +57,12 @@ namespace Step_ONE
             //Patterns.Test_Patterns();
             //Attributes.Foo2();
             //Attributes.Foo.Test_Attribute();
-            DynamicBinding.DynamicConversions();
+            // DynamicBinding.DynamicConversions();
+             */
+
+            // 1: .NET
+            Fundanental.Fundanental_Demo();
         }
-        
+
     }
 }
